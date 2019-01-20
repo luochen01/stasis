@@ -145,8 +145,8 @@ For<TYPE,DELTA_TYPE>::recordFind(int xid, slot_index_t low, slot_index_t high,
     {
       int64_t bs_low = low;
       int64_t bs_high = high;
-      while(nth_delta_ptr(bs_low) < 0 && bs_low < bs_high) { bs_low++; }
-      while(nth_delta_ptr(bs_high) < 0 && bs_low < bs_high) { bs_high--; }
+      while(nth_delta_ptr(bs_low) < (void *) 0 && bs_low < bs_high) { bs_low++; }
+      while(nth_delta_ptr(bs_high) < (void *) 0 && bs_low < bs_high) { bs_high--; }
 
       DEBUG("low: %d->%ld, high %d->%ld\n", low, bs_low, high, bs_high);
 
