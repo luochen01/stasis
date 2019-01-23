@@ -161,9 +161,7 @@ static void * writeBackWorker(void * bmp) {
   while(1) {
     while(bh->running && (!needFlush(bm))) {
       bh->flushing = 0;
-      DEBUG("Sleeping in write back worker (count = %lld)\n", stasis_dirty_page_table_dirty_count(bh->dpt));
       pthread_cond_wait(&bh->needFree, &bh->mut);
-      DEBUG("Woke write back worker (count = %lld)\n", stasis_dirty_page_table_dirty_count(bh->dpt));
       bh->flushing = 1;
     }
     if(!bh->running) { break; }
